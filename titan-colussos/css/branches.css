@@ -1,0 +1,29 @@
+.branches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+}
+
+.branch-card {
+    background: linear-gradient(180deg, var(--color-surface), #fbfbfe);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: 0 12px 36px rgba(16,24,40,0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.branch-card:hover { transform: translateY(-8px); box-shadow: 0 20px 56px rgba(16,24,40,0.08); }
+
+.branch-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.9rem;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.branch-card p { color: var(--color-muted); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+
+.branch-card i { color: var(--color-primary); width: 20px; }

@@ -1,0 +1,217 @@
+/* ===== ENHANCED HEADER STYLES ===== */
+header#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--color-surface);
+    box-shadow: 0 1px 0 rgba(16,24,40,0.04);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: var(--color-primary);
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+    display: block;
+}
+
+nav a:hover {
+    background: linear-gradient(90deg, rgba(106,17,203,0.08), rgba(37,117,252,0.06));
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+/* Enhanced Active State */
+nav a.active {
+    color: var(--color-primary);
+    background: linear-gradient(90deg, rgba(37,117,252,0.12), rgba(106,17,203,0.08));
+    box-shadow: 0 4px 12px rgba(37,117,252,0.15);
+    font-weight: 600;
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.7; transform: translateX(-50%) scale(1.2); }
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--color-text);
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(106,17,203,0.08);
+    color: var(--color-primary);
+}
+
+/* Scrolled State */
+header#header.scrolled {
+    padding: 0;
+    box-shadow: 0 8px 30px rgba(16,24,40,0.1);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+header#header.scrolled .header-content {
+    padding: 0.75rem 0;
+}
+
+/* Mobile Styles */
+@media (max-width: 880px) {
+    .mobile-menu-btn {
+        display: block;
+        z-index: 1001;
+    }
+
+    nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--color-surface);
+        padding: 5rem 2rem 2rem;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        z-index: 999;
+        overflow-y: auto;
+    }
+
+    nav.active {
+        display: block;
+        animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav a {
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .header-content {
+        padding: 1rem;
+    }
+}
+
+/* Body padding to account for fixed header */
+body {
+    padding-top: 80px; /* Adjust based on your header height */
+}
+
+@media (max-width: 880px) {
+    body {
+        padding-top: 70px; /* Slightly less on mobile */
+    }
+}
+
+/* Smooth scrolling for the whole page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scroll to top button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background: var(--color-secondary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37,117,252,0.3);
+}
